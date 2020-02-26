@@ -1,0 +1,1 @@
+var vCadastroUsuarios = angular.module("cadastroUsuarios", ["ngMessages", "ngRoute", "jwtRenew"]);

@@ -1,0 +1,23 @@
+<div class="jumbotron">
+	<form name="usuarioForm">
+		<input class="form-control" type="text" ng-if="usuario.tipo === 'Pessoa Física'" ng-disabled="!editando" ng-model="usuario.name" name="name" placeholder="Nome" ng-required="true" ng-minlength="10"/>
+		<input class="form-control" type="text" ng-if="usuario.tipo === 'Pessoa Física'" ng-disabled="!editando" ng-model="usuario.cpf" name="cpf" placeholder="CPF" ng-required="true" ng-minlength="10"/>
+
+		<input class="form-control" type="text" ng-if="usuario.tipo === 'Pessoa Jurídica'" ng-disabled="!editando" ng-model="usuario.razaoSocial" name="nomeFantasia" placeholder="Razão Social" ng-required="true" ng-minlength="10"/>
+		<input class="form-control" type="text" ng-if="usuario.tipo === 'Pessoa Jurídica'" ng-disabled="!editando" ng-model="usuario.cnpj" name="cnpj" placeholder="CNPJ" ng-required="true" ng-minlength="10"/>
+
+		<input class="form-control" type="text" ng-model="usuario.telefone" name="telefone" placeholder="Telefone" ng-disabled="!editando" ng-required="true" ng-pattern="/^\d{4,5}-\d{4}$/"/>
+		<select class="form-control" ng-model="usuario.operadora" ng-disabled="!editando" ng-options="operadora.nome for operadora in operadoras | orderBy:'nome'">
+			<option value="">Selecione uma operadora</option>
+		</select>
+	</form>
+
+	<div ng-show="usuarioForm.telefone.$error.pattern" class="alert alert-danger">
+		O campo telefone deve ter o formato DDDDD-DDDD.
+	</div>
+
+	<button class="btn btn-primary btn-block" ng-click="isEditing(true)" ng-if="!editando">Editar usuario</button>
+	<button class="btn btn-primary btn-block" ng-click="editarusuario(usuario)" ng-if="editando">Gravar alterações</button>
+	<br/>
+	<a class="btn btn-primary" href="#/usuarios">Voltar</a>
+</div>

@@ -1,0 +1,37 @@
+<div class="jumbotron">
+	<form name="usuarioForm">
+		<select class="form-control" ng-model="usuario.tipo">
+			<option value="">Selecione o tipo</option>
+			<option>Pessoa Física</option>
+			<option>Pessoa Jurídica</option>
+		</select>
+		
+		<div ng-show="usuario.tipo === 'Pessoa Física'">
+			<input class="form-control" type="text" ng-model="usuario.name" name="name" placeholder="Nome" ng-required="true" ng-minlength="10"/>
+			<input class="form-control" type="text" ng-model="usuario.cpf" name="cpf" placeholder="CPF" ng-required="true"/>
+		</div>
+
+		<div ng-show="usuario.tipo === 'Pessoa Jurídica'">
+			<input class="form-control" type="text" ng-model="usuario.nomeFantasia" name="nomeFantasia" placeholder="Nome Fantasia" ng-required="true" ng-minlength="10"/>
+			<input class="form-control" type="text" ng-model="usuario.cnpj" name="cnpj" placeholder="CNPJ" ng-required="true"/>
+			<input class="form-control" type="text" ng-model="usuario.razaoSocial" name="razaoSocial" placeholder="Razão Social" ng-required="true"/>
+		</div>
+
+		<input class="form-control" type="text" ng-model="usuario.email" name="email" placeholder="E-mail" ng-required="true"/>
+		<input class="form-control" type="password" ng-model="usuario.password" name="password" placeholder="Senha" ng-required="true"/>
+		<input class="form-control" type="text" ng-model="usuario.telefone" name="telefone" placeholder="Telefone" ng-required="true" ng-pattern="/^\d{4,5}-\d{4}$/"/>
+		<select class="form-control" ng-model="usuario.operadora" ng-options="operadora.nome for operadora in operadoras | orderBy:'nome'">
+			<option value="">Selecione uma operadora</option>
+		</select>
+	</form>
+	<!--usuarioForm.telefone.$error.required
+		valida somente o campo		
+	-->
+	<div ng-show="usuarioForm.telefone.$error.required && usuarioForm.telefone.$dirty" class="alert alert-danger">
+		Por favor, preencha o campo telefone!
+	</div>
+	<div ng-show="usuarioForm.telefone.$error.pattern" class="alert alert-danger">
+		O campo telefone deve ter o formato DDDDD-DDDD.
+	</div>
+	<button class="btn btn-primary btn-block" ng-click="adicionarusuario(usuario)">Adicionar usuario</button>
+</div>

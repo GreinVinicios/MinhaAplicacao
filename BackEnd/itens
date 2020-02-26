@@ -1,0 +1,19 @@
+Criar 3 arquivos:
+userRel.js
+userRel.html
+userCtrl.js
+conforme vídeo
+
+interpretar mensagem de erro pelo angular (status <> 200)
+
+Configurar as rotas para que o login possa dar um state.go na rota que abre o html userRel.html
+
+Ao logar corretamente gravar o token no localstorage
+
+
+**Verificar se tem um jwt renew - auth.js
+
+
+Se der token inválido em qualquer rota, redirecionar para login
+
+criar botão deslogar, que retorna para login

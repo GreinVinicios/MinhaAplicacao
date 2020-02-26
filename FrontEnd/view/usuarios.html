@@ -1,0 +1,39 @@
+<div class="jumbotron">
+	Relação de usuários
+	<!--  ng-model-options
+		updateOn = quando digita já aciona o filtro
+		default blur = só quando sai do campo
+		debounce = a dom espera um pouco caso não tenha nova digitação
+	-->
+	<input class="form-control" type="text" ng-model="criterioDeBusca" 	
+		   ng-model-options="{updateOn: 'default blur', debounce:{default: 500, blur: 0}}" 
+		   placeholder="Digite para pesquisar..."/>	
+	<table ng-show="usuarios.length > 0" class="table table-striped">
+		<tr>
+			<th></th>			
+			<th>Nome</a></th>
+			<th>E-mail</a></th>
+			<th>Telefone</a></th>
+			<th>Operadora</th>			
+			<th>Data</th>
+		</tr>		
+		<!--track by = tipo um index, auxilia a Dom a não precisar ficar renderizando tudo toda vez-->
+		<tr ng-class="{'selecionado negrito': usuario.selecionado}" 
+		    ng-repeat="usuario in usuarios | filter:criterioDeBusca">
+			<td><input type="checkbox" 
+					   ng-model="usuario.selecionado" 
+					   ng-click="verificarusuarioselecionado(usuarios)"/></td>			
+			<td><a href="#/detalhesUsuario/{{usuario._id}}">{{::usuario.name || usuario.razaoSocial}}</a></td>
+			<td>{{usuario.email}}</td>
+			<td>{{usuario.telefone}}</td>
+			<td>{{::usuario.operadora.nome}}</td>			
+			<td>{{::usuario.dataCriacao | date:'dd/MM/yyyy'}}</td>
+			<!--o "::" deixa o campo como "one time bind"
+				também significa que quero que o angular tire o watcher depois que receber o valor
+			-->
+		</tr>
+	</table>
+	<hr/>
+	<a class="btn btn-primary btn-block" href="#/novoUsuario">Novo usuario</a>
+	<button class="btn btn-danger btn-block" ng-click="apagarusuarios(usuarios)" ng-if="hasusuarioselecionado">Apagar usuarios</button>	
+</div>
