@@ -24,6 +24,15 @@
 			<option value="">Selecione uma operadora</option>
 		</select>
 	</form>
+
+	<div ng-show="usuarioForm.name.$dirty" ng-messages="usuarioForm.name.$error">
+		<div ng-message="required" class="alert alert-danger">
+			Por favor, preencha o campo nome!
+		</div>
+		<div ng-message="minlength" class="alert alert-danger">
+			O campo nome deve ter no mínimo 10 caracteres.
+		</div>
+	</div>
 	<!--usuarioForm.telefone.$error.required
 		valida somente o campo		
 	-->

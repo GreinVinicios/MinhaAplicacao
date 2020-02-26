@@ -1,4 +1,4 @@
-vCadastroUsuarios.controller("detalhesUsuarioCtrl", function ($scope, usuario, operadoras, usuariosAPI, $location) {	
+vCadastroUsuarios.controller("detalhesUsuarioCtrl", function ($scope, usuario, operadoras, usuariosAPI, $location, tokenAPI) {	
 	$scope.usuario = usuario.data.user;
 	$scope.operadoras = operadoras.data;
 

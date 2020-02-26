@@ -1,4 +1,4 @@
-vCadastroUsuarios.controller("novoUsuarioCtrl", function ($scope, usuariosAPI, $location, operadoras) {
+vCadastroUsuarios.controller("novoUsuarioCtrl", function ($scope, usuariosAPI, $location, operadoras, tokenAPI) {
 	$scope.operadoras = operadoras.data;
 
 	//renovação do token
